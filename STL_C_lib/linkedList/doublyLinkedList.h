@@ -205,10 +205,10 @@ int sizeDLL(dlinkedlist* head){
 
 //<----------FREE THE MEMORY-------------->
 
-void freeMemoryDLL(deque* head){
+void freeMemoryDLL(dlinkedlist* head){
 
     //free the memery
-    deque* next;
+    dlinkedlist* next;
     while(head!=NULL){
     	next=head->next;
 	free(head);
