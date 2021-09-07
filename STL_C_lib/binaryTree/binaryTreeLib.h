@@ -1,119 +1,110 @@
 #ifndef binaryTreeLib
+#include <stdio.h>
 #include <stdlib.h>
-#include "../DataTypes.h"
 
-//<----------Node of Tree--------->
-
+//Binary tree Node
 struct btree{
-    void* data;
-    struct btree* left;
-    struct btree* right;
-    short datatype;
+  void* data;
+  struct btree* left;
+  struct btree* right;
+  short datatype;
 };
 typedef struct btree btree;
 
-//<-------Construct the binary tree------>
-//returns a pointer of type btree (btree*)
 
-btree* constructBTree(short datatype){
+// Create a new Node
+btree* createNode(short datatype,void* value) {
 
-    btree* root=(btree*)malloc(sizeof(btree));
-	
-    root->datatype=datatype;
-    root->left=NULL;
-    root->right=NULL;
+  //allocate memory for node of tree
+  btree* newNode = malloc(sizeof(struct btree));
 
-    if(datatype==1){
-    	root->data=(void*)&dataInt;
-    }else if(datatype==2){
-	root->data=(void*)&dataChar;
-    }else if(datatype==3){
-	root->data=(void*)&dataFloat;
-    }else if(datatype==4){
-	root->data=(void*)&dataString;
-    }
-    //root->data=NULL;
-    return root;
-}
+  //fill values
+  newNode->data = value;
+  newNode->left = NULL;
+  newNode->right = NULL;
 
-btree* addNode(short datatype,void* val){
-    
-    btree* root=(btree*)malloc(sizeof(btree));
-	
-    root->datatype=datatype;
-    root->left=NULL;
-    root->right=NULL;
+  //set datatype
+  newNode->datatype=datatype;
 
-    root->data=val;
-    
-    return root;
-}
-
-//<--------MAKE TREE FROM ARRAY------>
-void arrToBTree(btree* root, void* arr[], int n, short datatype){
-     static int index=0;
-     //root->data=arr[index++];
-     if(index>n){
-     	return;
-     }
-     root->data=arr[index++];
-     if(index>n){
-     	return;
-     }
-     root->left=addNode(datatype,arr[index++]);
-     if(index>n){
-     	return;
-     }
-     root->right=addNode(datatype,arr[index++]);
-
-     arrToBTree(root->left,arr,n,datatype);
-     arrToBTree(root->right,arr,n,datatype);
+  return newNode;
 }
 
 
-//<---------PREORDER TRAVERSAL---------->
-void preorderBtree(btree* root){
-    
-    if(root==(void*)&dataInt){
-	return;
-    }
+// Insert on the left of the node
+btree* insertLeft(btree* root, void* value) {
 
+  root->left = createNode(root->datatype,value);
+
+  return root->left;
+}
+
+// Insert on the right of the node
+btree* insertRight(btree* root, void* value) {
+
+  root->right = createNode(root->datatype,value);
+
+  return root->right;
+}
+
+
+// Inorder traversal
+void inorderTraversal(btree* root) {
+    
+    if (root == NULL) return;
+
+    inorderTraversal(root->left);
+  
     if(root->datatype==1){
-    	printf("%d ",*(int*)root->data);
+        printf("%d ",*(int*)root->data);
     }else if(root->datatype==2){
         printf("%c ",*(char*)root->data);
     }else if(root->datatype==3){
         printf("%f ",*(float*)root->data);
     }else if(root->datatype==4){
-        printf("%s ",(char*)root->data);
-    }
-
-    preorderBtree(root->left);
-    
-    preorderBtree(root->right);
-  	
+        printf("%s ",*(char**)root->data);
+    }   
+  
+    inorderTraversal(root->right);
 }
 
-//<---------INORDER TRAVERSAL---------->
-void inorderBtree(btree* root){
- 	
-    if(root==NULL){
-    	return;
-    }
-    preorderBtree(root->left);
-
+// Preorder traversal
+void preorderTraversal(btree* root) {
+    
+    if (root == NULL) return;
+  
     if(root->datatype==1){
-    	printf("%d ",*(int*)root->data);
+        printf("%d ",*(int*)root->data);
     }else if(root->datatype==2){
         printf("%c ",*(char*)root->data);
     }else if(root->datatype==3){
         printf("%f ",*(float*)root->data);
     }else if(root->datatype==4){
-        printf("%s ",(char*)root->data);
-    }
+        printf("%s ",*(char**)root->data);
+    }   
     
-    preorderBtree(root->right);
-	
+    preorderTraversal(root->left);
+    preorderTraversal(root->right);
 }
+
+// Postorder traversal
+void postorderTraversal(btree* root) {
+    
+    if (root == NULL) return;
+        
+    postorderTraversal(root->left);
+    postorderTraversal(root->right);
+    
+    if(root->datatype==1){
+        printf("%d ",*(int*)root->data);
+    }else if(root->datatype==2){
+        printf("%c ",*(char*)root->data);
+    }else if(root->datatype==3){
+        printf("%f ",*(float*)root->data);
+    }else if(root->datatype==4){
+        printf("%s ",*(char**)root->data);
+    }   
+
+}
+
 #define binaryTreeLib
 #endif
