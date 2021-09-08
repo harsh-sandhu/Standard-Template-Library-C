@@ -1,4 +1,5 @@
 #ifndef bSearch
+#include <stdlib.h>
 #include "../sorting/comparator.h"
 int binary_search(void* arr, short datatype, int l, int r, void* x)
 {
@@ -79,5 +80,6 @@ int binarySearchFloat(void* arr, int n, float key){
 int binarySearchString(char** arr, int n, char* key){
     return binary_search_str(arr,0,n-1,key);
 }
+
 #define bSearch
 #endif
