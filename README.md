@@ -691,3 +691,42 @@ sort(arr, 10 , INTASC);
  ```C
  ftovp(arr,ptr[],size);
  ```
+ ## Searching
+ ### Searching (Standard)
+ ***searchArr(void * arr, int arr_size , void * key, _datatype_)*** : search the key element in the array.
+ 
+ Array can be Integer, Character, Float or String type
+ 
+ array with size of array along with the pointer to key element and datatype is passed as argument
+ ```C
+ int index=searchArr( arr , arr_size , &key, _datatype_ ) // _datatype_ can be INTDATA, FLOATDATA, etc
+ ```
+ returns the index(0-based) of element if present, else returns -1
+ 
+ 
+ ### Binary Search - ***(For sorted array only)***
+ ### Time Complexity : O(Log n)
+ ### Integer
+ function to search Integer key in Integer array. array along with size and key is passed as argument
+ ```C
+ int index=binarySearchInt(arr, arr_size , key)
+ ```
+ returns the index(0-based) of element if present, else returns -1
+  ### Character
+   function to search Character key in Character array. array along with size and key is passed as argument
+ ```C
+ int index=binarySearchChar(arr, arr_size , key)
+ ```
+ returns the index(0-based) of element if present, else returns -1
+  ### Float
+   function to search Float key in Float array. array along with size and key is passed as argument
+ ```C
+ int index=binarySearchFloat(arr, arr_size , key)
+ ```
+ returns the index(0-based) of element if present, else returns -1
+  ### String
+  function to search String key in String array. array along with size and key is passed as argument
+ ```C
+ int index=binarySearchString(arr, arr_size , key)
+ ```
+ returns the index(0-based) of element if present, else returns -1
