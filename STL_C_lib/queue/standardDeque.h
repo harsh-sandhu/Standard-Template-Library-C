@@ -234,6 +234,14 @@ int is_emptyDeque(deque* head){
 
 //<------------------------------------------->
 
+//<------------SIZE OF DEQUE------------->
+
+int sizeOfDeque(deque* head){
+    return head->length;
+}
+
+//<-------------------------------------->
+
 
 void freeMemoryDeque(deque* head){
 

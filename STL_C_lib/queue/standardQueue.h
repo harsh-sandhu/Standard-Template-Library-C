@@ -147,6 +147,14 @@ int is_emptyQueue(queue* head){
 //<--------------------------------------->
 
 
+//<------------SIZE OF QUEUE------------->
+
+int sizeOfQueue(queue* head){
+    return head->length;
+}
+
+//<-------------------------------------->
+
 //<----------FREE THE MEMORY-------------->
 
 void freeMemoryQueue(queue* head){
