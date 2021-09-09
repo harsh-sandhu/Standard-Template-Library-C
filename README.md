@@ -27,10 +27,20 @@ This Standard Template Library designed for C provideds
 * ***Searching Algorithms***
 
 ### How to use this Standard Template Library in C?
-To use this library, download the files in same folder where you have your file in which you want to use this library, then include this header libaray named CSTL.h
+To use this library, download the files in same folder where you have your file in which you want to use this library, then include this header libaray named stlclib.h
 ```C
- #include "CSTL.h"
+ #include "stlclib.h"
 ```
+after, including the header while compiling your code, you have to link library to file
+```
+gcc filename.c -L. -lcstl
+```
+you can also add other flags according to your convience with this
+```
+gcc filename.c -L. -lcstl -o myCompiledCode
+```
+now user may run ther custom named file (here myCompiledCode)
+
 User can also download files in any place and use the path in include statement of the program where you want to use the library.
 
 ## Linked List
