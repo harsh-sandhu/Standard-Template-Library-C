@@ -1,9 +1,9 @@
 #ifndef DataTypes
 //<--------DATATYPE CONSTANTS--------->
-// 1-int
-// 2-char
-// 3-float
-// 4-string
+short INTDATA=1;   // 1-int
+short CHARDATA=2;  // 2-char
+short FLOATDATA=3; // 3-float
+short STRDATA=4;   // 4-string
 
 int dataInt=-1;
 char dataChar='\0';
